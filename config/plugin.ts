@@ -7,7 +7,7 @@ const plugin: EggPlugin = {
   //   package: 'egg-view-nunjucks',
   // },
   cors: {
-    enable: true,
+    enable: false,
     package: 'egg-cors',
   },
   mongoose: {

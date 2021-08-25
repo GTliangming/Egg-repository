@@ -10,15 +10,9 @@ export default (appInfo: EggAppInfo) => {
     origin: '*', // 访问白名单
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
-  config.mongoose = {
-    url: 'mongodb://123.56.31.193:27017',
-    options: {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-      // auth: {
-      //   user: 'lm',
-      //   password: 'lmzs1111',
-      // },
+  config.security = {
+    csrf: {
+      enable: false,
     },
   };
   // add your egg config in here

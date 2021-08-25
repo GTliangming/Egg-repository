@@ -1,5 +1,4 @@
 import { Service } from 'egg';
-
 /**
  * Test Service
  */
