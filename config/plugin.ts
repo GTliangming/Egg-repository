@@ -1,18 +1,18 @@
 import { EggPlugin } from 'egg';
 
 const plugin: EggPlugin = {
-  // static: true,
-  // nunjucks: {
-  //   enable: true,
-  //   package: 'egg-view-nunjucks',
-  // },
+  jwt: {
+    enable: true,
+    package: 'egg-jwt',
+  },
   cors: {
     enable: false,
     package: 'egg-cors',
   },
   mongoose: {
-    enable: true,
+    enable: false,
     package: 'egg-mongoose',
   },
+
 };
 export default plugin;

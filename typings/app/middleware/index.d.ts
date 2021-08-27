@@ -2,10 +2,10 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
-import ExportUser from '../../../app/controller/user';
+import ExportJwt from '../../../app/middleware/jwt';
 
 declare module 'egg' {
-  interface IController {
-    user: ExportUser;
+  interface IMiddleware {
+    jwt: typeof ExportJwt;
   }
 }

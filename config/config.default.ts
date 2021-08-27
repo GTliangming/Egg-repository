@@ -6,15 +6,23 @@ export default (appInfo: EggAppInfo) => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1629789199483_2090';
 
-  config.cors = {
-    origin: '*', // 访问白名单
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+
+  config.jwt = {
+    secret: 'egg-test',
   };
   config.security = {
     csrf: {
       enable: false,
+      ignoreJSON: true,
     },
+    domainWhiteList: ['*'], // 配置白名单
   };
+  config.cors = {
+    // origin: '*', // 访问白名单
+    credentials: true, // 允许 Cookie 跨域跨域
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+  };
+
   // add your egg config in here
   config.middleware = [];
 
