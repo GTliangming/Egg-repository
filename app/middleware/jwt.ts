@@ -1,8 +1,9 @@
 import { Context } from 'egg';
-const JwtCheckout = (secret: string) => {
+const consola = require('consola');
+const JwtCheck = (secret: string) => {
   return async (ctx: Context, next: any) => {
     const token = ctx.request.header.authorization as string; // 拿到toke
-    console.log('token---->', token);
+    consola.info('token---->', token);
     if (token !== 'null' && token) {
       try {
         const formatToken = token.split(' ')[1];
@@ -10,9 +11,9 @@ const JwtCheckout = (secret: string) => {
         ctx.app.jwt.verify(formatToken, secret);
         await next();
       } catch (error) {
-        console.log(error);
+        consola.error(error);
         if (error.name === 'TokenExpiredError') {
-          console.log('Token过期！');
+          consola.info('Token过期！');
           ctx.body = {
             msg: 'token已过期，请重新登录',
             code: 401,
@@ -36,4 +37,4 @@ const JwtCheckout = (secret: string) => {
   };
 };
 
-export default JwtCheckout;
+export default JwtCheck;

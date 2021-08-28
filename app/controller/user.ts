@@ -1,4 +1,6 @@
 import { Controller } from 'egg';
+import { decodeMd5, md5 } from '../../utils/md5';
+const consola = require('consola');
 export default class UserController extends Controller {
   // 注册
   public async Register() {
@@ -14,11 +16,14 @@ export default class UserController extends Controller {
     const token = app.jwt.sign({
       id: 1,
       username,
-      password,
       exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60), // token 有效期为 24 小时
       // exp: Math.floor(Date.now() / 1000) + 10, // 测试 --- token 有效期为 10秒
     }, app.config.jwt.secret);
-    ctx.body = { message: '登录成功！', code: 1, data: { token } };
+    const newPWd = md5(password);
+    const result = decodeMd5(newPWd);
+    consola.info(2222, username, password);
+    ctx.body = { message: '登录成功2！', code: 1, data: { token, newPWd, result } };
+
   }
 
   // 获取用户信息
@@ -26,6 +31,7 @@ export default class UserController extends Controller {
     const ctx = this.ctx;
     ctx.body = { message: '获取成功', code: 1 };
   }
+
 
   // public async index() {
   //   const ctx = this.ctx;
