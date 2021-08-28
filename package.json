@@ -23,10 +23,12 @@
   },
   "dependencies": {
     "consola": "^2.15.3",
+    "crypto": "^1.0.1",
     "egg": "^2.6.1",
     "egg-jwt": "^3.1.7",
     "egg-mongoose": "^3.3.1",
-    "egg-scripts": "^2.6.0"
+    "egg-scripts": "^2.6.0",
+    "nodemailer": "^6.6.3"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
