@@ -7,7 +7,6 @@ export default class Common extends Service {
       const result = await sendMail(email);
       return result;
     } catch (err) {
-      console.log(err);
       return false;
     }
   }

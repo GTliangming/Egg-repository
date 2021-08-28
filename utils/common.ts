@@ -1,5 +1,4 @@
 
-
 // 时间 格式化成 2018-12-12 12:12:00
 export const timestampToTime = (timestamp: string) => {
   const date = new Date(timestamp);

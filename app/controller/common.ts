@@ -12,7 +12,16 @@ export default class CommonController extends Controller {
     }
     try {
       const result = await ctx.service.common.sendEmail(email);
-      console.log(result);
+      if (result) {
+        ctx.body = {
+          code: 200,
+          msg: '验证码发送成功！请在邮箱中查看',
+        };
+      }
+      ctx.body = {
+        code: 500,
+        msg: '系统错误',
+      };
     } catch (error) {
       ctx.body = {
         code: 500,

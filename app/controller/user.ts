@@ -1,5 +1,6 @@
 import { Controller } from 'egg';
 import { decodeMd5, md5 } from '../../utils/md5';
+const consola = require('consola');
 export default class UserController extends Controller {
   // 注册
   public async Register() {
@@ -20,7 +21,7 @@ export default class UserController extends Controller {
     }, app.config.jwt.secret);
     const newPWd = md5(password);
     const result = decodeMd5(newPWd);
-    console.log(2222, username, password);
+    consola.info(2222, username, password);
     ctx.body = { message: '登录成功2！', code: 1, data: { token, newPWd, result } };
 
   }
@@ -30,6 +31,7 @@ export default class UserController extends Controller {
     const ctx = this.ctx;
     ctx.body = { message: '获取成功', code: 1 };
   }
+
 
   // public async index() {
   //   const ctx = this.ctx;
