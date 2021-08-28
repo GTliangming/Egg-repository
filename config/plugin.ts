@@ -6,7 +6,7 @@ const plugin: EggPlugin = {
     package: 'egg-jwt',
   },
   cors: {
-    enable: true,
+    enable: false,
     package: 'egg-cors',
   },
   mongoose: {
