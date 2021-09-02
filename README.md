@@ -82,3 +82,4 @@ egg-project
 生成头像的
 
 `https://api.multiavatar.com/${name}.svg`
+https://github.com/multiavatar/Multiavatar
