@@ -22,6 +22,7 @@
     "clean": "ets clean"
   },
   "dependencies": {
+    "@multiavatar/multiavatar": "^1.0.6",
     "consola": "^2.15.3",
     "crypto": "^1.0.1",
     "egg": "^2.6.1",

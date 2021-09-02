@@ -75,3 +75,10 @@ egg-project
 2、链接mongodb `npm install egg-mongoose --save`
 3、命令行打印每户 `npm i consola`
 4、token加密解密 `npm i egg-jwt --save `
+
+
+
+
+生成头像的
+
+`https://api.multiavatar.com/${name}.svg`
