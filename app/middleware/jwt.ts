@@ -2,13 +2,14 @@ import { Context } from 'egg';
 const consola = require('consola');
 const JwtCheck = (secret: string) => {
   return async (ctx: Context, next: any) => {
-    const token = ctx.request.header.authorization as string; // 拿到toke
-    consola.info('token---->', token);
+    const token = ctx.request.header.authorization as string; // 拿到token
+    let decode = '';
     if (token !== 'null' && token) {
       try {
         const formatToken = token.split(' ')[1];
         // 解密 token
-        ctx.app.jwt.verify(formatToken, secret);
+        decode = ctx.app.jwt.verify(formatToken, secret);
+        ctx.decode = decode;
         await next();
       } catch (error) {
         consola.error(error);
@@ -27,7 +28,6 @@ const JwtCheck = (secret: string) => {
         return;
       }
     } else {
-      ctx.status = 200;
       ctx.body = {
         code: 401,
         msg: 'token不存在',
