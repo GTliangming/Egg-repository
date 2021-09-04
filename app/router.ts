@@ -7,6 +7,8 @@ export default (app: Application) => {
 
   // 发送验证码
   router.post('/api/common/sendEmail', controller.common.sendEmail);
+  // 生成头像
+  router.get('/api/common/getIcon', controller.common.getIcon);
 
 
   /* 用户相关 */
