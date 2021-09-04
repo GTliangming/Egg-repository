@@ -7,6 +7,19 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1629789199483_2090';
 
 
+  config.session = {
+    // 设置session cookis里面的key
+    key: 'SESSION_KEY',
+    // 设置过期时间
+    maxAge: 24 * 3600 * 1000,
+    httpOnly: true,
+    // 设置是否加密
+    encrypt: true,
+    // 设置每次刷新页面的时候session是否都会被延期
+    renew: true,
+  };
+
+
   config.jwt = {
     secret: 'egg-test',
   };

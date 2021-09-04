@@ -2,7 +2,7 @@ import { Application } from 'egg';
 export default (app: Application) => {
   const { controller, router, middleware } = app;
   const _jwt = middleware.jwt(app.config.jwt.secret);
-
+  // const _Session = middleware.session();
   /* 工具路由 */
 
   // 发送验证码
@@ -19,5 +19,4 @@ export default (app: Application) => {
   router.post('/api/user/login', controller.user.Login);
   // 获取用户信息
   router.post('/api/user/getUserInfo', _jwt, controller.user.GetUserInfo);
-
 };
