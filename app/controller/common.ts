@@ -29,4 +29,18 @@ export default class CommonController extends Controller {
       };
     }
   }
+  public async getIcon() {
+    const { key } = this.ctx.request.query;
+    const iconName = key ? key : Math.random().toString(36).substr(3);
+    const result = await this.ctx.curl('https://api.multiavatar.com/' + JSON.stringify(iconName));
+    const img = new Buffer(result.data).toString();
+    this.ctx.body = {
+      code: 200,
+      msg: 'hhh',
+      date: {
+        img,
+        url: `https://api.multiavatar.com/${iconName}.png`,
+      },
+    };
+  }
 }
