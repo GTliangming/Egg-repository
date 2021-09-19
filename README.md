@@ -33,7 +33,7 @@ $ npm start
 - Typescript 2.8+
 
 ### 目录结构
-···
+```bash
 egg-project
 ├── package.json
 ├── app(项目开发目录)
@@ -70,7 +70,7 @@ egg-project
     |   └── response_time.test.js
     └── controller
         └── home.test.js
-···
+```
 ### 部分插件
 
 - 1、处理跨域 `npm i egg-cors --save-dev`
