@@ -33,6 +33,7 @@ $ npm start
 - Typescript 2.8+
 
 ### 目录结构
+···
 egg-project
 ├── package.json
 ├── app(项目开发目录)
@@ -69,13 +70,14 @@ egg-project
     |   └── response_time.test.js
     └── controller
         └── home.test.js
+···
 ### 部分插件
 
-1、处理跨域 `npm i egg-cors --save-dev`
-2、连接mongodb `npm install egg-mongoose --save`
-3、命令行打印每户 `npm i consola`
-4、token加密解密 `npm i egg-jwt --save `
-5、命令行美化 `npm i chalk  log-symbols`
+- 1、处理跨域 `npm i egg-cors --save-dev`
+- 2、连接mongodb `npm install egg-mongoose --save`
+- 3、命令行打印每户 `npm i consola`
+- 4、token加密解密 `npm i egg-jwt --save `
+- 5、命令行美化 `npm i chalk  log-symbols`
 
 
 
