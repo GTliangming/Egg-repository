@@ -1,6 +1,6 @@
 import { Controller } from 'egg';
+import { LogInfo } from '../../utils/log';
 // import { decodeMd5, md5 } from '../../utils/md5';
-const consola = require('consola');
 export default class UserController extends Controller {
   // 注册
   public async Register() {
@@ -13,7 +13,7 @@ export default class UserController extends Controller {
   public async Login() {
     const { ctx, app } = this;
     const { userid } = ctx.request.body;
-    consola.log('userid', userid);
+    LogInfo('userid', userid);
     // 生成 token
     const token = app.jwt.sign({
       userid,

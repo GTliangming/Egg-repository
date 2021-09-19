@@ -1,5 +1,5 @@
 import { Context } from 'egg';
-const consola = require('consola');
+import { LogInfo } from '../../utils/log';
 
 const getClientIp = (req: any) => {
   return (
@@ -8,13 +8,12 @@ const getClientIp = (req: any) => {
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress
   );
-}
+};
 
 
 const showLog = () => {
   return async (ctx: Context, next: any) => {
-    consola.info(333)
-    consola.info(`${new Date()}-[${getClientIp(ctx.req)}]-${ctx.req.url}`);
+    LogInfo(`[${new Date()}] - [${getClientIp(ctx.req)}] - ${ctx.req.url}`);
     await next();
   };
 };
