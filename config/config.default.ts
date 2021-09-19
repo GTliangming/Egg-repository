@@ -5,8 +5,6 @@ export default (appInfo: EggAppInfo) => {
   // override config from framework / plugin
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1629789199483_2090';
-
-
   config.session = {
     // 设置session cookis里面的key
     key: 'SESSION_KEY',
@@ -37,7 +35,7 @@ export default (appInfo: EggAppInfo) => {
   };
 
   // add your egg config in here
-  config.middleware = [];
+  config.middleware = ['log'];
 
   // add your special config in here
   const bizConfig = {

@@ -1,5 +1,5 @@
 import { Context } from 'egg';
-const consola = require('consola');
+import { LogErr } from '../../utils/log';
 const JwtCheck = (secret: string) => {
   return async (ctx: Context, next: any) => {
     const token = ctx.request.header.authorization as string; // 拿到token
@@ -12,9 +12,8 @@ const JwtCheck = (secret: string) => {
         ctx.decode = decode;
         await next();
       } catch (error) {
-        consola.error(error);
         if (error.name === 'TokenExpiredError') {
-          consola.info('Token过期！');
+          LogErr('Token过期！');
           ctx.body = {
             msg: 'token已过期，请重新登录',
             code: 401,
