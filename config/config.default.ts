@@ -16,8 +16,6 @@ export default (appInfo: EggAppInfo) => {
     // 设置每次刷新页面的时候session是否都会被延期
     renew: true,
   };
-
-
   config.jwt = {
     secret: 'egg-test',
   };
@@ -33,13 +31,33 @@ export default (appInfo: EggAppInfo) => {
     credentials: true, // 允许 Cookie 跨域跨域
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
-
+  config.validate = { convert: true };
   // add your egg config in here
   config.middleware = ['log'];
 
   // add your special config in here
   const bizConfig = {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
+  };
+  config.mysql = {
+    // 单数据库信息配置
+    client: {
+      // host
+      host: '123.56.31.193',
+      // 端口号
+      port: '3306',
+      // 用户名
+      user: 'root',
+      // 密码
+      password: 'lmzs124083',
+      // 数据库名
+      database: 'egg',
+      debugger: true,
+    },
+    // 是否加载到 app 上，默认开启
+    app: true,
+    // 是否加载到 agent 上，默认关闭
+    agent: false,
   };
   // the return config will combines to EggAppConfig
   return {

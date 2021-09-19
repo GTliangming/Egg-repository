@@ -4,8 +4,23 @@ import { LogInfo } from '../../utils/log';
 export default class UserController extends Controller {
   // 注册
   public async Register() {
-    const ctx = this.ctx;
-    ctx.body = { message: '注册成功！', code: 1 };
+    const { ctx } = this;
+    const { username, password } = ctx.request.body;
+    // 定义请求参数类型
+    const createRule = {
+      password: { type: 'string', required: true, allowEmpty: false },
+      username: { type: 'string', required: true, allowEmpty: false },
+    };
+    try {
+      // 校验
+      ctx.validate(createRule);
+      const result = await ctx.service.user.doRegister(username, password);
+      ctx.body = { message: '注册成功', code: 200, data: result };
+    } catch (err) {
+      ctx.body = { success: false };
+      ctx.body = { message: '注册失败！参数缺失', code: 401, data: err.errors };
+      return;
+    }
   }
 
   // jwt
