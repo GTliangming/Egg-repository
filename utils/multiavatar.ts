@@ -1,1 +1,0 @@
-import multiavatar from '@multiavatar/multiavatar/esm'
