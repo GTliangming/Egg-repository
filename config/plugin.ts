@@ -9,10 +9,5 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-cors',
   },
-  mongoose: {
-    enable: false,
-    package: 'egg-mongoose',
-  },
-
 };
 export default plugin;

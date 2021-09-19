@@ -72,9 +72,10 @@ egg-project
 ### 部分插件
 
 1、处理跨域 `npm i egg-cors --save-dev`
-2、链接mongodb `npm install egg-mongoose --save`
+2、连接mongodb `npm install egg-mongoose --save`
 3、命令行打印每户 `npm i consola`
 4、token加密解密 `npm i egg-jwt --save `
+5、命令行美化 `npm i chalk  log-symbols`
 
 
 
