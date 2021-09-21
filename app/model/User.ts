@@ -7,15 +7,34 @@ import moment = require('moment');
 
 
 module.exports = (app: Application) => {
-	const { INTEGER, STRING, DATE } = app.Sequelize;
+	const { DATE, NOW, DataTypes } = app.Sequelize;
 	const User = app.model.define('user', {
-		id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-		username: { type: STRING(255), allowNull: false },
-		password: { type: STRING(255), allowNull: false },
-		name: STRING(30),
-		age: INTEGER,
-		created_time: { type: DATE, allowNull: false, get() { return moment((this as any).getDataValue('created_at')).format('YYYY-MM-DD HH:mm:ss'); } },
-		updated_time: { type: DATE, allowNull: false, get() { return moment((this as any).getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss'); } },
+		id: { type: DataTypes.INTEGER, autoIncrement: true },
+		user_id: {
+			type: DataTypes.INTEGER,
+			field: 'user_id',
+			primaryKey: true,
+		},
+		username: { type: DataTypes.STRING(50), allowNull: false },
+		password: { type: DataTypes.STRING(50), allowNull: false },
+		email: {
+			type: DataTypes.STRING(20),
+			allowNull: false,
+		},
+		tel: { type: DataTypes.INTEGER, allowNull: true },
+		user_type: { type: DataTypes.INTEGER, allowNull: true, defaultValue: 2 },
+		created_time: {
+			type: DATE,
+			allowNull: true,
+			defaultValue: NOW,
+			get() { return moment((this as any).getDataValue('created_at')).format('YYYY-MM-DD HH:mm:ss'); },
+		},
+		updated_time: {
+			type: DATE,
+			allowNull: true,
+			defaultValue: NOW,
+			get() { return moment((this as any).getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss'); },
+		},
 	}, {
 		paranoid: false,
 		timestamps: true,

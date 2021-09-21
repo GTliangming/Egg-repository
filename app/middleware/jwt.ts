@@ -20,11 +20,6 @@ const JwtCheck = (secret: string) => {
           };
           return;
         }
-        ctx.body = {
-          msg: 'token已失效，请重新登录',
-          code: 401,
-        };
-        return;
       }
     } else {
       ctx.body = {
