@@ -11,16 +11,29 @@ export default class UserController extends Controller {
       password: { type: 'string', required: true, allowEmpty: false },
       username: { type: 'string', required: true, allowEmpty: false },
     };
-    try {
-      // 校验
-      ctx.validate(createRule);
-      const result = await ctx.service.user.doRegister(username, password);
-      ctx.body = { message: '注册成功', code: 200, data: result };
-    } catch (err) {
-      ctx.body = { success: false };
-      ctx.body = { message: '注册失败！参数缺失', code: 401, data: err.errors };
-      return;
-    }
+    // try {
+    // 校验
+    ctx.validate(createRule);
+    // const result = await ctx.service.user.doRegister(username, password);
+    const result = await ctx.model.User.create({
+      name: 'Jack',
+      age: 18,
+      username,
+      password,
+      created_time: new Date(),
+      updated_time: new Date(),
+    });
+    // const result = await ctx.model.User.insert({
+    //   name: 'Jack',
+    //   age: 18,
+    // });
+    // const result = await ctx.model.User.findByPk(1);
+    ctx.body = { message: '注册成功', code: 200, data: result };
+    // } catch (err) {
+    //   ctx.body = { success: false };
+    //   ctx.body = { message: '注册失败！参数缺失', code: 401, data: err.errors };
+    //   return;
+    // }
   }
 
   // jwt

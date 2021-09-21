@@ -86,3 +86,20 @@ egg-project
 
 `https://api.multiavatar.com/${name}.svg`
 https://github.com/multiavatar/Multiavatar
+
+
+
+解决TS mysql报错
+
+typings/app/index.d.ts
+```
+declare module 'egg' {
+
+  interface Application {
+
+    mysql: any
+
+  }
+
+}
+```
