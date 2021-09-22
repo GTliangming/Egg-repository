@@ -19,4 +19,6 @@ export default (app: Application) => {
   router.post('/api/user/login', controller.user.Login);
   // 获取用户信息
   router.post('/api/user/getUserInfo', _jwt, controller.user.GetUserInfo);
+  // 更新用户信息
+  router.post('/api/user/updateUserInfo', _jwt, controller.user.UpdateUserInfo);
 };

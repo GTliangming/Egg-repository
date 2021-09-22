@@ -39,26 +39,7 @@ export default (appInfo: EggAppInfo) => {
   const bizConfig = {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
   };
-  // config.mysql = {
-  //   // 单数据库信息配置
-  //   client: {
-  //     // host
-  //     host: '123.56.31.193',
-  //     // 端口号
-  //     port: '3306',
-  //     // 用户名
-  //     user: 'root',
-  //     // 密码
-  //     password: 'lmzs124083',
-  //     // 数据库名
-  //     database: 'egg',
-  //     debugger: true,
-  //   },
-  //   // 是否加载到 app 上，默认开启
-  //   app: true,
-  //   // 是否加载到 agent 上，默认关闭
-  //   agent: false,
-  // };
+
   config.sequelize = {
     dialect: 'mysql', // 表示是mysql数据库
     host: '123.56.31.193',

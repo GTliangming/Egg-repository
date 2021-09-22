@@ -1,10 +1,11 @@
 import { Controller } from 'egg';
+import { v4 as uuidv4 } from 'uuid';
 // import { decodeMd5, md5 } from '../../utils/md5';
 export default class UserController extends Controller {
   // 注册
   public async Register() {
     const { ctx, app } = this;
-    const { username, password, email } = ctx.request.body;
+    const { username, password, email, tel } = ctx.request.body;
     // 定义请求参数类型
     const createRule = {
       password: { type: 'string', required: true, allowEmpty: false },
@@ -18,10 +19,11 @@ export default class UserController extends Controller {
       ctx.body = { message: '注册失败！参数缺失', code: 401, data: err.errors };
       return;
     }
-    const result = await ctx.service.user.doRegister({ username, password, email, user_id: 1111 });
+    const user_auto_id = uuidv4();
+    const result = await ctx.service.user.doRegister({ username, password, email, user_id: user_auto_id, tel });
     if (result.created) {
       const token = app.jwt.sign({
-        id: result.date.id,
+        id: user_auto_id,
         exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60), // token 有效期为 24 小时
       }, app.config.jwt.secret);
       ctx.body = { message: '注册成功', code: 200, token };
@@ -68,9 +70,22 @@ export default class UserController extends Controller {
   // 获取用户信息
   public async GetUserInfo() {
     const ctx = this.ctx;
-    console.log(66666, ctx.decode.id);
     const result = await ctx.service.user.getUserInfo({ user_id: ctx.decode.id });
-    ctx.body = { message: `获取成功,登录的用户的用户ID为：${ctx.decode.id}`, code: 200, data: result };
+    if (result.isHave) {
+      ctx.body = { message: `获取成功,登录的用户的用户ID为：${ctx.decode.id}`, code: 200, data: result };
+      return;
+    }
+    ctx.body = { message: '获取失败', code: 402 };
   }
-
+  // 更新用户信息
+  public async UpdateUserInfo() {
+    const ctx = this.ctx;
+    const { username, password, email, tel } = ctx.request.body;
+    const result = await ctx.service.user.updateUserInfo({ user_id: ctx.decode.id, username, password, email, tel });
+    if (result) {
+      ctx.body = { message: '更新成功', code: 200 };
+      return;
+    }
+    ctx.body = { message: '更新失败', code: 402 };
+  }
 }

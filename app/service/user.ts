@@ -34,6 +34,7 @@ export default class UserService extends Service {
         password: parameter.password,
         email: parameter.email,
         user_id: parameter.user_id,
+        tel: parameter.tel,
       },
     });
     LogInfo(user, created);
@@ -52,12 +53,11 @@ export default class UserService extends Service {
     const user = await this.ctx.model.User.findOne({
       where: {
         [Op.or]: [
-          { username: parameter.username },
-          { email: parameter.email },
+          { username: parameter.username, password: parameter.password },
+          { email: parameter.email, password: parameter.password },
         ],
       },
     });
-
     if (user === null) {
       return { date: null, isHave: false };
     }
@@ -68,10 +68,34 @@ export default class UserService extends Service {
      * @param parameter - 查询参数
      */
   public async getUserInfo(parameter: parameterType): Promise<{
-    date?: any; created?: any; isHave?: boolean
+    date?: any; isHave?: boolean
   }> {
-    const user = await this.ctx.model.User.findByPk(parameter.user_id);
-    console.log(222, user);
-    return { date: user, isHave: true };
+    try {
+      const user = await this.ctx.model.User.findOne({
+        where: {
+          user_id: parameter.user_id,
+        },
+      });
+      return { date: user, isHave: true };
+    } catch (error) {
+      return { date: null, isHave: false };
+    }
+  }
+  /**
+   *  根据userID  更新用户信息(密码、邮箱、电话但不包含用户类型)
+   * @param parameter - 查询参数
+   */
+  public async updateUserInfo(parameter: parameterType): Promise<boolean> {
+    try {
+      const user = await this.ctx.model.User.findOne({
+        where: {
+          user_id: parameter.user_id,
+        },
+      });
+      await user.update({ ...parameter });
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 }

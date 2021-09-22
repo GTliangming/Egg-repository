@@ -11,7 +11,7 @@ module.exports = (app: Application) => {
 	const User = app.model.define('user', {
 		id: { type: DataTypes.INTEGER, autoIncrement: true },
 		user_id: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING(50),
 			field: 'user_id',
 			primaryKey: true,
 		},
@@ -20,6 +20,7 @@ module.exports = (app: Application) => {
 		email: {
 			type: DataTypes.STRING(20),
 			allowNull: false,
+			unique: true,
 		},
 		tel: { type: DataTypes.INTEGER, allowNull: true },
 		user_type: { type: DataTypes.INTEGER, allowNull: true, defaultValue: 2 },
