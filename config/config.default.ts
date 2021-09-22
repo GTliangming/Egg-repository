@@ -16,8 +16,6 @@ export default (appInfo: EggAppInfo) => {
     // 设置每次刷新页面的时候session是否都会被延期
     renew: true,
   };
-
-
   config.jwt = {
     secret: 'egg-test',
   };
@@ -33,7 +31,7 @@ export default (appInfo: EggAppInfo) => {
     credentials: true, // 允许 Cookie 跨域跨域
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
-
+  config.validate = { convert: true };
   // add your egg config in here
   config.middleware = ['log'];
 
@@ -41,6 +39,18 @@ export default (appInfo: EggAppInfo) => {
   const bizConfig = {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
   };
+
+  config.sequelize = {
+    dialect: 'mysql', // 表示是mysql数据库
+    host: '123.56.31.193',
+    port: 3306,
+    database: 'testSql',
+    username: 'testSql',
+    password: 'lmzs124083',
+    timezone: '+08:00', // 表示为东八区的时间,
+  };
+
+
   // the return config will combines to EggAppConfig
   return {
     ...config,

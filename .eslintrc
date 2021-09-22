@@ -5,6 +5,10 @@
   },
   "rules": {
     "@typescript-eslint/no-var-requires": 0,
-    "array-bracket-spacing": "off"
+    "array-bracket-spacing": "off",
+    "indent": [
+      "off",
+      2
+    ]
   }
 }
