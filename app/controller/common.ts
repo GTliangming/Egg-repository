@@ -1,6 +1,12 @@
 import { Controller } from 'egg';
 export default class CommonController extends Controller {
-
+  public async Test() {
+    const { ctx } = this;
+    ctx.body = {
+      code: 200,
+      msg: '测试成功',
+    };
+  }
   public async sendEmail() {
     const { ctx } = this;
     const { email } = ctx.request.body;

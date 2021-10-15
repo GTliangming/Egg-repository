@@ -40,15 +40,15 @@ export default (appInfo: EggAppInfo) => {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
   };
 
-  config.sequelize = {
-    dialect: 'mysql', // 表示是mysql数据库
-    host: '123.56.31.193',
-    port: 3306,
-    database: 'testSql',
-    username: 'testSql',
-    password: 'lmzs124083',
-    timezone: '+08:00', // 表示为东八区的时间,
-  };
+  // config.sequelize = {
+  //   dialect: 'mysql', // 表示是mysql数据库
+  //   host: '123.56.31.193',
+  //   port: 3306,
+  //   database: 'testSql',
+  //   username: 'testSql',
+  //   password: 'lmzs124083',
+  //   timezone: '+08:00', // 表示为东八区的时间,
+  // };
 
 
   // the return config will combines to EggAppConfig

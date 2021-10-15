@@ -9,10 +9,10 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-cors',
   },
-  sequelize: {
-    enable: true,
-    package: 'egg-sequelize',
-  },
+  // sequelize: {
+  //   enable: true,
+  //   package: 'egg-sequelize',
+  // },
   validate: {
     enable: true,
     package: 'egg-validate',

@@ -10,7 +10,7 @@ export default (app: Application) => {
   // 生成头像
   router.get('/api/common/getIcon', controller.common.getIcon);
 
-
+  router.get('/api/common/test', controller.common.Test);
   /* 用户相关 */
 
   // 注册
