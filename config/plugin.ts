@@ -9,6 +9,10 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-cors',
   },
+  nunjucks: {
+    enable: true,
+    package: 'egg-view-nunjucks',
+  },
   // sequelize: {
   //   enable: true,
   //   package: 'egg-sequelize',

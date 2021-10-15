@@ -40,6 +40,13 @@ export default (appInfo: EggAppInfo) => {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
   };
 
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.html': 'nunjucks',
+    },
+  };
+
   // config.sequelize = {
   //   dialect: 'mysql', // 表示是mysql数据库
   //   host: '123.56.31.193',

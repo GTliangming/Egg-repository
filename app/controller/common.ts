@@ -2,10 +2,7 @@ import { Controller } from 'egg';
 export default class CommonController extends Controller {
   public async Test() {
     const { ctx } = this;
-    ctx.body = {
-      code: 200,
-      msg: '测试成功',
-    };
+    await ctx.render('index.html', { title: '测试页面' });
   }
   public async sendEmail() {
     const { ctx } = this;
