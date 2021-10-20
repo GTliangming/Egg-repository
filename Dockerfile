@@ -4,9 +4,9 @@ COPY . /home/egg-api
 
 WORKDIR /home/egg-api
 
-RUN npm install 
-
-LABEL Descripttion="This image is build for egg-api"
+RUN  npm install -g cnpm --registry=https://registry.npm.taobao.org \
+    &&   cnpm install  \
+    &&  cnpm audit fix
 
 EXPOSE 7001
 
