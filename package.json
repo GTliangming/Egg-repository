@@ -8,6 +8,7 @@
     "declarations": true
   },
   "scripts": {
+    "prestart": "npm run clean && npm run ci",
     "start": "egg-scripts start --daemon --title=egg-server-test",
     "stop": "egg-scripts stop --title=egg-server-test",
     "dev": "egg-bin dev",

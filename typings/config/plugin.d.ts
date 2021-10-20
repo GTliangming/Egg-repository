@@ -36,6 +36,7 @@ declare module 'egg' {
     jwt?: EggPluginItem;
     cors?: EggPluginItem;
     nunjucks?: EggPluginItem;
+    sequelize?: EggPluginItem;
     validate?: EggPluginItem;
   }
 }
