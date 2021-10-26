@@ -14,19 +14,11 @@ const JwtCheck = (secret: string) => {
       } catch (error) {
         if (error.name === 'TokenExpiredError') {
           LogErr('Token过期！');
-          ctx.body = {
-            msg: 'token已过期，请重新登录',
-            code: 401,
-          };
-          return;
+          ctx.throw(401, 'invalid token');
         }
       }
     } else {
-      ctx.body = {
-        code: 401,
-        msg: 'token不存在',
-      };
-      return;
+      ctx.throw(401, 'no token detected in http header "Authorization"');
     }
   };
 };
