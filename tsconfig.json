@@ -21,6 +21,7 @@
     "skipDefaultLibCheck": true,
     "inlineSourceMap": true,
     "importHelpers": true,
+    "useUnknownInCatchVariables": false
   },
   "exclude": [
     "app/public",

@@ -9,9 +9,8 @@ import moment = require('moment');
 module.exports = (app: Application) => {
 	const { DATE, NOW, DataTypes } = app.Sequelize;
 	const User = app.model.define('user', {
-		// id: { type: DataTypes.INTEGER, autoIncrement: true },
 		user_id: {
-			type: DataTypes.STRING(50),
+			type: DataTypes.INTEGER,
 			field: 'user_id',
 			primaryKey: true,
 		},

@@ -18,3 +18,11 @@ export const createSixNum = () => {
   arr.forEach(() => codeNum += Math.floor(Math.random() * 10));
   return codeNum;
 };
+
+// 生成不重复的ID 用作用户ID 10位
+// 当前时间戳后五位+五位随机数
+export const UUID = () => {
+  const randomStr = Math.random().toString().substr(2, 5);
+  const dateStr = new Date().getTime().toString();
+  return Number(dateStr.substr(8, 5) + randomStr);
+};
