@@ -1,6 +1,4 @@
 import { Controller } from 'egg';
-import { v4 as uuidv4 } from 'uuid';
-// import { decodeMd5, md5 } from '../../utils/md5';
 export default class UserController extends Controller {
   // 注册
   public async Register() {
@@ -19,11 +17,10 @@ export default class UserController extends Controller {
       ctx.body = { message: '注册失败！参数缺失', code: 401, data: err.errors };
       return;
     }
-    const user_auto_id = uuidv4();
     const result = await ctx.service.user.doRegister({ username, password, email, tel });
     if (result.created) {
       const token = app.jwt.sign({
-        id: user_auto_id,
+        id: result.date.dataValues.user_id,
         exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60), // token 有效期为 24 小时
       }, app.config.jwt.secret);
       ctx.body = { message: '注册成功', code: 200, token };
@@ -56,9 +53,9 @@ export default class UserController extends Controller {
       return;
     }
     const result = await ctx.service.user.doLogin({ username, password, email });
-    if (result.created) {
+    if (result.isHave) {
       const token = app.jwt.sign({
-        id: result.date.id,
+        id: result.date.dataValues.user_id,
         exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60), // token 有效期为 24 小时
       }, app.config.jwt.secret);
       ctx.body = { message: '登录成功', code: 200, token };
@@ -72,7 +69,7 @@ export default class UserController extends Controller {
     const ctx = this.ctx;
     const result = await ctx.service.user.getUserInfo({ user_id: ctx.decode.id });
     if (result.isHave) {
-      ctx.body = { message: `获取成功,登录的用户的用户ID为：${ctx.decode.id}`, code: 200, data: result };
+      ctx.body = { message: `获取成功,登录的用户的用户ID为：${ctx.decode.id}`, code: 200, data: result.date };
       return;
     }
     ctx.body = { message: '获取失败', code: 402 };

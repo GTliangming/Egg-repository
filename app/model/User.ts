@@ -13,6 +13,7 @@ module.exports = (app: Application) => {
 			type: DataTypes.INTEGER,
 			field: 'user_id',
 			primaryKey: true,
+			autoIncrement: true,
 		},
 		username: { type: DataTypes.STRING(50), allowNull: false },
 		password: { type: DataTypes.STRING(50), allowNull: false },
