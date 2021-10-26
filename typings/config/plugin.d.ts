@@ -17,6 +17,7 @@ import 'egg-view';
 import 'egg-jwt';
 import 'egg-cors';
 import 'egg-view-nunjucks';
+import 'egg-sequelize';
 import 'egg-validate';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {

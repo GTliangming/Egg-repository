@@ -20,7 +20,7 @@ export default class UserController extends Controller {
       return;
     }
     const user_auto_id = uuidv4();
-    const result = await ctx.service.user.doRegister({ username, password, email, user_id: user_auto_id, tel });
+    const result = await ctx.service.user.doRegister({ username, password, email, tel });
     if (result.created) {
       const token = app.jwt.sign({
         id: user_auto_id,
