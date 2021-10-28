@@ -10,8 +10,6 @@ COPY package.json /home/egg-api/
 
 RUN  npm install -g cnpm --registry=https://registry.npm.taobao.org \
     &&   cnpm install  
-
-ENV HOST 0.0.0.0 &&  PORT 7001
 EXPOSE 7001
 CMD [ "npm", "start" ]
 
