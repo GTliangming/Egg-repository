@@ -7,7 +7,6 @@ COPY . /home/egg-api
 WORKDIR /home/egg-api
 
 COPY package.json /home/egg-api/
-COPY yarn.lock /home/egg-api/
 
 RUN  npm install -g cnpm --registry=https://registry.npm.taobao.org \
     &&   cnpm install  
