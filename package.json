@@ -32,9 +32,11 @@
     "egg-validate": "^2.0.2",
     "egg-view-nunjucks": "^2.3.0",
     "log-symbols": "^4.0.0",
+    "marked": "^3.0.8",
     "moment": "^2.29.1",
     "mysql2": "^2.3.0",
     "nodemailer": "^6.6.3",
+    "stream-wormhole": "^1.1.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -42,8 +44,8 @@
     "@types/node": "^7.0.12",
     "@types/supertest": "^2.0.0",
     "autod": "^3.0.1",
-    "chalk": "^4.1.1",
     "autod-egg": "^1.1.0",
+    "chalk": "^4.1.1",
     "egg-bin": "^4.11.0",
     "egg-ci": "^1.8.0",
     "egg-cors": "^2.2.3",

@@ -24,7 +24,7 @@ export default (appInfo: EggAppInfo) => {
       enable: false,
       ignoreJSON: true,
     },
-    domainWhiteList: ['*'], // 配置白名单
+    domainWhiteList: ['http://localhost:8080'], // 配置白名单
   };
   config.cors = {
     // origin: '*', // 访问白名单
@@ -55,6 +55,17 @@ export default (appInfo: EggAppInfo) => {
     username: 'root',
     password: 'lmzs1111',
     timezone: '+08:00', // 表示为东八区的时间,
+  };
+
+  config.multipart = {
+    // mode: 'file',
+    mode: 'stream',
+    cleanSchedule: {
+      // run tmpdir clean job on every day 04:30 am
+      cron: '0 30 4 * * *',
+    },
+    fileSize: '50mb', //    文件大小限制-string, 错误：400 Bad request
+    whitelist: ['.md'],
   };
 
 

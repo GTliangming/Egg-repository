@@ -3,6 +3,8 @@ export default (app: Application) => {
   const { controller, router, middleware } = app;
   const _jwt = middleware.jwt(app.config.jwt.secret);
   // const _Session = middleware.session();
+
+
   /* 工具路由 */
 
   // 发送验证码
@@ -11,8 +13,9 @@ export default (app: Application) => {
   router.get('/api/common/getIcon', controller.common.getIcon);
 
   router.get('/api/common/test', controller.common.Test);
-  /* 用户相关 */
 
+
+  /* 用户相关 */
   // 注册
   router.post('/api/user/register', controller.user.Register);
 
@@ -25,4 +28,9 @@ export default (app: Application) => {
   router.post('/api/user/getUserInfo', _jwt, controller.user.GetUserInfo);
   // 更新用户信息
   router.post('/api/user/updateUserInfo', _jwt, controller.user.UpdateUserInfo);
+
+
+  /* 文章相关 */
+  // 文章上传
+  router.post('/api/article/upload', controller.article.Upload);
 };
