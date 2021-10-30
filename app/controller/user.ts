@@ -64,6 +64,41 @@ export default class UserController extends Controller {
     ctx.body = { message: '该邮箱或用户名未注册', code: 402 };
   }
 
+
+  // 后台用户登录
+  public async AdminLogin() {
+    const { ctx, app } = this;
+    const { username, password } = ctx.request.body;
+    // 定义请求参数类型
+    const createRule = {
+      password: { type: 'string', required: true, allowEmpty: false },
+      username: { type: 'string', required: true, allowEmpty: false },
+    };
+    try {
+      // 校验
+      ctx.validate(createRule);
+    } catch (err) {
+      ctx.body = { success: false };
+      ctx.body = { message: '登录失败！参数缺失', code: 401, data: err.errors };
+      return;
+    }
+    const result = await ctx.service.user.AdmindoLogin({ username, password });
+    if (!result.isHave) {
+      ctx.body = { message: '该用户不存在或用户名密码错误', code: 402 };
+      return;
+    }
+    if (!result.isAuth) {
+      ctx.body = { message: '此用户不属于后台管理员', code: 402 };
+      return;
+    }
+    const token = app.jwt.sign({
+      id: result.date.dataValues.user_id,
+      exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60), // token 有效期为 24 小时
+    }, app.config.jwt.secret);
+    ctx.body = { message: '登录成功', code: 200, data: { token, userinfo: result.date } };
+  }
+
+
   // 获取用户信息
   public async GetUserInfo() {
     const ctx = this.ctx;

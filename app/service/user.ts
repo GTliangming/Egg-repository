@@ -48,7 +48,7 @@ export default class UserService extends Service {
      * @param parameter - 登录参数
      */
   public async doLogin(parameter: parameterType): Promise<{
-    date?: any; created?: any; isHave?: boolean
+    date?: any; isHave?: boolean
   }> {
     const user = await this.ctx.model.User.findOne({
       where: {
@@ -63,6 +63,30 @@ export default class UserService extends Service {
     }
     return { date: user, isHave: true };
   }
+  /**
+   *  后台用户登录
+   * @param parameter - 后台登录参数
+   */
+  public async AdmindoLogin(parameter: parameterType): Promise<{
+    date?: any; isHave?: boolean, isAuth?: boolean
+  }> {
+    const user = await this.ctx.model.User.findOne({
+      where: {
+        [Op.and]: [
+          { username: parameter.username },
+          { password: parameter.password },
+        ],
+      },
+    });
+    if (user === null) {
+      return { date: null, isHave: false };
+    }
+    if (user.dataValues.user_type === 1 || user.dataValues.user_type === 2) {
+      return { date: user, isHave: true, isAuth: true };
+    }
+    return { date: user, isHave: true, isAuth: false };
+  }
+
   /**
      *  根据userID 获取用户信息
      * @param parameter - 查询参数

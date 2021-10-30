@@ -15,6 +15,10 @@ export default (app: Application) => {
 
   // 注册
   router.post('/api/user/register', controller.user.Register);
+
+  // 后台用户登录
+  router.post('/api/user/admin-login', controller.user.AdminLogin);
+
   // 登录
   router.post('/api/user/login', controller.user.Login);
   // 获取用户信息
