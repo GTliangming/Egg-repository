@@ -13,7 +13,6 @@ export default class UserController extends Controller {
       // 校验
       ctx.validate(createRule);
     } catch (err) {
-      ctx.body = { success: false };
       ctx.body = { message: '注册失败！参数缺失', code: 401, data: err.errors };
       return;
     }
@@ -48,7 +47,6 @@ export default class UserController extends Controller {
       // 校验
       ctx.validate(email ? createRule2 : createRule1);
     } catch (err) {
-      ctx.body = { success: false };
       ctx.body = { message: '登录失败！参数缺失', code: 401, data: err.errors };
       return;
     }
@@ -78,7 +76,6 @@ export default class UserController extends Controller {
       // 校验
       ctx.validate(createRule);
     } catch (err) {
-      ctx.body = { success: false };
       ctx.body = { message: '登录失败！参数缺失', code: 401, data: err.errors };
       return;
     }

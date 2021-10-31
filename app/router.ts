@@ -32,5 +32,8 @@ export default (app: Application) => {
 
   /* 文章相关 */
   // 文章上传
-  router.post('/api/article/upload', controller.article.Upload);
+  router.post('/api/article/upload-file', _jwt, controller.article.UploadFile);
+
+  /* 用户文章相关 */
+  router.post('/api/userArticle/upload', _jwt, controller.userArticle.Upload);
 };

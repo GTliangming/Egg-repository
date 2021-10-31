@@ -1,7 +1,10 @@
 import { Service } from 'egg';
 import { FileStream } from '../../typings/app';
+import { markedToHtml } from '../../utils/marked';
+
+
 /**
- * Test Service
+ * Article Service
  */
 export default class Article extends Service {
 
@@ -11,21 +14,34 @@ export default class Article extends Service {
    */
 
 
-  public async getStreamInfo(stream: FileStream) {
-    let mdStr = '';
-    let errFlag = false;
-    stream.on('data', chunk => {
-      mdStr += chunk;
-    });
-    stream.on('end', () => {
-      // return { streamStr: mdStr, errFlag };
-    });
-    stream.on('error', error => {
-      errFlag = true;
-      console.log(error);
-    });
-    setTimeout(() => {
-      return { streamStr: mdStr, errFlag };
-    }, 500);
+  public async getStreamInfo(stream: FileStream, actricle_author: string): Promise<{
+    isupload: boolean, actricle_id: string
+  }> {
+    try {
+      let mdStr = '';
+      const result: string = await new Promise((resolve, reject) => {
+        stream.on('data', chunk => {
+          mdStr += chunk;
+        });
+        stream.on('end', () => {
+          resolve(mdStr);
+        });
+        stream.on('error', error => {
+          console.log(error);
+          reject(error);
+        });
+      });
+      const htmlStr = markedToHtml(result);
+      if (!htmlStr || htmlStr === '') {
+        return { isupload: false, actricle_id: '' };
+      }
+      const actricleResult = await this.ctx.model.Actricle.create({
+        actricle_text: htmlStr,
+        actricle_author,
+      });
+      return { isupload: true, actricle_id: actricleResult.dataValues.actricle_id };
+    } catch (error) {
+      return { isupload: false, actricle_id: '' };
+    }
   }
 }
