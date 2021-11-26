@@ -49,7 +49,7 @@ export default (appInfo: EggAppInfo) => {
 
   config.sequelize = {
     dialect: 'mysql', // 表示是mysql数据库
-    host: '123.56.31.193',
+    host: '150.158.167.162',
     port: 3306,
     database: 'blog',
     username: 'root',
