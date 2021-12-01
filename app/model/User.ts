@@ -46,6 +46,5 @@ module.exports = (app: Application) => {
 		tableName: 'blog_users', // 自定义的表名，也可以不写，直接用define后面的也可以
 		// 只要你使用了freezeTableName，程序就不会自动给你加上s了
 	});
-
 	return User;
 };
