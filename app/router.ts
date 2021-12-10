@@ -13,7 +13,7 @@ export default (app: Application) => {
   router.get('/api/common/getIcon', controller.common.getIcon);
 
   router.get('/api/common/test', controller.common.Test);
-
+  router.get('/api/common/time', controller.common.Time);
 
   /* 用户相关 */
   // 注册

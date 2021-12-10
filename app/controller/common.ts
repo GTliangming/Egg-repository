@@ -4,6 +4,10 @@ export default class CommonController extends Controller {
     const { ctx } = this;
     await ctx.render('index.html', { title: '测试页面' });
   }
+  public async Time() {
+    const { ctx } = this;
+    await ctx.render('test.html');
+  }
   public async sendEmail() {
     const { ctx } = this;
     const { email } = ctx.request.body;
