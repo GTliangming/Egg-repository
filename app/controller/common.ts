@@ -6,7 +6,7 @@ export default class CommonController extends Controller {
   }
   public async Time() {
     const { ctx } = this;
-    await ctx.render('test.html');
+    await ctx.render('time.html');
   }
   public async sendEmail() {
     const { ctx } = this;

@@ -1,5 +1,5 @@
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
-
+const path = require('path');
 export default (appInfo: EggAppInfo) => {
   const config = {} as PowerPartial<EggAppConfig>;
   // override config from framework / plugin
@@ -44,6 +44,7 @@ export default (appInfo: EggAppInfo) => {
     defaultViewEngine: 'nunjucks',
     mapping: {
       '.html': 'nunjucks',
+      '.js': 'public',
     },
   };
 
@@ -68,6 +69,11 @@ export default (appInfo: EggAppInfo) => {
     whitelist: ['.md'],
   };
 
+  // 静态文件配置
+  config.static = {
+    prefix: '/public/',
+    dir: path.join(appInfo.baseDir, 'app/public'),
+  };
 
   // the return config will combines to EggAppConfig
   return {

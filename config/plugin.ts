@@ -21,5 +21,9 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-validate',
   },
+  static: {
+    enable: true,
+    // package: 'egg-static',
+  },
 };
 export default plugin;
