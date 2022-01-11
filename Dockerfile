@@ -8,8 +8,8 @@ WORKDIR /home/egg-api
 
 COPY package.json /home/egg-api/
 
-RUN  npm install -g cnpm --registry=https://registry.npm.taobao.org \
-    &&   cnpm install  
+RUN npm config set registry "https://registry.npm.taobao.org/" \
+    && npm install 
 EXPOSE 7001
 CMD [ "npm", "start" ]
 
