@@ -20,7 +20,6 @@ export default class UpdateCache extends Subscription {
     }, (err, res) => {
       if (!err) {
         const content = JSON.parse(res.body);
-        console.log(111, content.newslist);
         // const params = {
         //   'msgtype': 'text',
         //   'text': {
