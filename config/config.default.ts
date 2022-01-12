@@ -27,7 +27,7 @@ export default (appInfo: EggAppInfo) => {
     domainWhiteList: ['http://localhost:8080'], // 配置白名单
   };
   config.cors = {
-    // origin: '*', // 访问白名单
+    origin: '*', // 访问白名单
     credentials: true, // 允许 Cookie 跨域跨域
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
