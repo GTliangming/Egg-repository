@@ -9,7 +9,7 @@
   },
   "scripts": {
     "prestart": "npm run clean && npm run ci",
-    "start": "egg-scripts start --title=egg-server-test --port=7001  --workers=2 --env=prod --ignore-stderr",
+    "start": "egg-scripts start --title=egg-server-test --port=7001  --env=prod",
     "stop": "egg-scripts stop --title=egg-server-test",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "@multiavatar/multiavatar": "^1.0.6",
-    "cron-parser": "^4.2.1",
     "crypto": "^1.0.1",
     "egg": "^2.6.1",
     "egg-jwt": "^3.1.7",
