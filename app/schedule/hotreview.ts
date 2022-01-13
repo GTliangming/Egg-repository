@@ -9,7 +9,7 @@ export default class UpdateCache extends Subscription {
   static get schedule() {
     return {
       // interval: '10s', // 1 分钟间隔
-      cron: '0 0 15 * * ? *',
+      cron: '0 0 15 ? * MON-FRI',
       type: 'worker', // 指定所有的 worker 都需要执行
     };
   }
@@ -30,8 +30,7 @@ export default class UpdateCache extends Subscription {
         const params = {
           msgtype: 'markdown',
           markdown: {
-            "content": `来自歌曲   ${content.newslist[0].source}  \n
-                    >${content.newslist[0].content}\n`
+            content: `来自歌曲   ${content.newslist[0].source}  \n>${content.newslist[0].content}\n`,
           },
         };
         console.log(999, params);
