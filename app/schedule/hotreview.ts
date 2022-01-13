@@ -8,7 +8,7 @@ export default class HotReview extends Subscription {
   // 通过 schedule 属性来设置定时任务的执行间隔等配置
   static get schedule() {
     return {
-      cron: '0 0 15 ? * MON-FRI',
+      cron: '0 0 15,18 ? * MON-FRI',
       type: 'worker', // all指定所有的 worker 都需要执行
     };
   }
