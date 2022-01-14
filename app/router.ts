@@ -36,4 +36,10 @@ export default (app: Application) => {
 
   /* 用户文章相关 */
   router.post('/api/userArticle/upload', _jwt, controller.userArticle.Upload);
+
+
+  /* 用于香芋味影评的 */
+  router.post('/api/taro/additem', controller.taro.ADD);
+  router.post('/api/taro/updateitem', controller.taro.Update);
+  router.get('/api/taro/getList', controller.taro.GetList);
 };
