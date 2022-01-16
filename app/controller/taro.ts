@@ -51,5 +51,15 @@ export default class TaroController extends Controller {
     }
     ctx.body = { message: '获取失败', code: 402 };
   }
+  public async GetItem() {
+    const { ctx } = this;
+    const { id } = ctx.request.query;
+    const result = await ctx.service.taro.getItem({ taro_id: id });
+    if (result.result) {
+      ctx.body = { message: '获取成功', code: 200, data: result.data };
+      return;
+    }
+    ctx.body = { message: '获取失败', code: 402 };
+  }
 }
 

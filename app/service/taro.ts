@@ -55,9 +55,27 @@ export default class Taro extends Service {
   public async getList(): Promise<{ data?: any, result: boolean }> {
     try {
       const taro = await this.ctx.model.Taro.findAll({});
+      const newList = taro.splice(1);
+      return { result: true, data: newList.reverse() };
+    } catch (error) {
+      return { result: false };
+    }
+  }
+
+  /**
+   *  查询单个条目
+   */
+  public async getItem(parameter: { taro_id: string }): Promise<{ data?: any, result: boolean }> {
+    try {
+      const taro = await this.ctx.model.Taro.findOne({
+        where: {
+          taro_id: parameter.taro_id,
+        },
+      });
       return { result: true, data: taro };
     } catch (error) {
       return { result: false };
     }
   }
+
 }
