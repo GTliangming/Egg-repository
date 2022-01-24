@@ -43,4 +43,8 @@ export default (app: Application) => {
   router.post('/api/taro/updateitem', controller.taro.Update);
   router.get('/api/taro/getItem', controller.taro.GetItem);
   router.get('/api/taro/getList', controller.taro.GetList);
+
+  /* 用于微信小程序登录验证 */
+  router.post('/api/wechat/auth', controller.wechat.Auth);
+  router.post('/api/wechat/login', controller.wechat.Login);
 };

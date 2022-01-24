@@ -7,6 +7,7 @@ import ExportCommon from '../../../app/controller/common';
 import ExportTaro from '../../../app/controller/taro';
 import ExportUser from '../../../app/controller/user';
 import ExportUserArticle from '../../../app/controller/userArticle';
+import ExportWechat from '../../../app/controller/wechat';
 
 declare module 'egg' {
   interface IController {
@@ -15,5 +16,6 @@ declare module 'egg' {
     taro: ExportTaro;
     user: ExportUser;
     userArticle: ExportUserArticle;
+    wechat: ExportWechat;
   }
 }
