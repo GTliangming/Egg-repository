@@ -6,7 +6,7 @@ class WeChatController extends Controller {
     }
 
     public Login() {
-
+        
     }
 }
 export default WeChatController;
