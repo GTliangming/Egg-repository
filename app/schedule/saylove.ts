@@ -3,8 +3,8 @@ const Subscription = require('egg').Subscription;
 const request = require('request');
 const webhook = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=92f82d96-86b7-4af4-8394-a5c1efd35d70';
 const key = 'c854802ac330abef23a003bc699e8f0f';
-const reqUrl = 'http://api.tianapi.com/healthtip/index';
-export default class HealthtIp extends Subscription {
+const reqUrl = 'http://api.tianapi.com/qingshi/index';
+export default class SayLove extends Subscription {
     // 通过 schedule 属性来设置定时任务的执行间隔等配置
     static get schedule() {
         return {
@@ -22,7 +22,7 @@ export default class HealthtIp extends Subscription {
                 const params = {
                     msgtype: 'markdown',
                     markdown: {
-                        content: `每日健康小贴士 😁😁😁 \n >${content.newslist[0].content}\n`,
+                        content: `${content.newslist[0].source} \n >作者:  ${content.newslist[0].author}  \n >${content.newslist[0].content} `,
                     },
                 };
                 request.post({
