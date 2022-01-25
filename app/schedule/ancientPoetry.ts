@@ -3,12 +3,12 @@ const Subscription = require('egg').Subscription;
 const request = require('request');
 const webhook = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=92f82d96-86b7-4af4-8394-a5c1efd35d70';
 const key = 'c854802ac330abef23a003bc699e8f0f';
-const reqUrl = 'http://api.tianapi.com/qingshi/index';
-export default class SayLove extends Subscription {
+const reqUrl = 'http://api.tianapi.com/gjmj/index';
+export default class AncientPoetry extends Subscription {
     // 通过 schedule 属性来设置定时任务的执行间隔等配置
     static get schedule() {
         return {
-            cron: '0 0 12 ? * MON-FRI',
+            cron: '0 45 18 ? * MON-FRI',
             type: 'worker', // all指定所有的 worker 都需要执行
         };
     }
@@ -20,9 +20,10 @@ export default class SayLove extends Subscription {
             if (!err) {
                 const content = JSON.parse(res.body);
                 const params = {
-                    msgtype: 'markdown',
-                    markdown: {
-                        content: `${content.newslist[0].source} \n >作者:  ${content.newslist[0].author}  \n >${content.newslist[0].content} `,
+                    msgtype: 'text',
+                    text: {
+                        content: `作者：${content?.newslist[0].source} \n${content?.newslist[0].content}`,
+                        mentioned_mobile_list: ['18895635384'],
                     },
                 };
                 request.post({
