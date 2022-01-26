@@ -15,7 +15,7 @@ class UserActricleController extends Controller {
     try {
       // 校验
       ctx.validate(createRule);
-    } catch (err) {
+    } catch (err: any) {
       ctx.body = { message: '添加文章失败！参数缺失活', code: 401, data: err.errors };
       return;
     }

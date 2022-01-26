@@ -11,7 +11,7 @@ const JwtCheck = (secret: string) => {
         decode = ctx.app.jwt.verify(formatToken, secret);
         ctx.decode = decode;
         await next();
-      } catch (error) {
+      } catch (error: any) {
         if (error.name === 'TokenExpiredError') {
           LogErr('Token过期！');
           ctx.throw(401, 'invalid token');

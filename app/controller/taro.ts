@@ -16,7 +16,7 @@ export default class TaroController extends Controller {
     try {
       // 校验
       ctx.validate(createRule);
-    } catch (err) {
+    } catch (err: any) {
       ctx.body = { message: '添加失败,电影名或内容缺失', code: 401, data: err.errors };
       return;
     }
