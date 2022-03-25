@@ -14,6 +14,9 @@ export default (app: Application) => {
 
   router.get('/api/common/test', controller.common.Test);
   router.get('/api/common/time', controller.common.Time);
+  // 获取七牛云Token
+  router.get('/api/common/qiniu', controller.common.Qiniu);
+
 
   /* 用户相关 */
   // 注册

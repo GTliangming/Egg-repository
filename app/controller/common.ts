@@ -1,4 +1,5 @@
 import { Controller } from 'egg';
+
 export default class CommonController extends Controller {
   public async Test() {
     const { ctx } = this;
@@ -48,6 +49,19 @@ export default class CommonController extends Controller {
         img,
         url: `https://api.multiavatar.com/${iconName}.png`,
       },
+    };
+  }
+
+  /* 获取七牛云的Token */
+  public async Qiniu() {
+    const { ctx } = this;
+    console.log(4444);
+    const result = await ctx.service.upload.getQiniuToken();
+    console.log(222, result);
+    ctx.body = {
+      code: 200,
+      message: 'success',
+      result,
     };
   }
 }

@@ -10,6 +10,7 @@ import ExportTest from '../../../app/service/Test';
 import ExportArticle from '../../../app/service/article';
 import ExportCommon from '../../../app/service/common';
 import ExportTaro from '../../../app/service/taro';
+import ExportUpload from '../../../app/service/upload';
 import ExportUser from '../../../app/service/user';
 
 declare module 'egg' {
@@ -18,6 +19,7 @@ declare module 'egg' {
     article: AutoInstanceType<typeof ExportArticle>;
     common: AutoInstanceType<typeof ExportCommon>;
     taro: AutoInstanceType<typeof ExportTaro>;
+    upload: AutoInstanceType<typeof ExportUpload>;
     user: AutoInstanceType<typeof ExportUser>;
   }
 }
