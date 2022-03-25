@@ -55,13 +55,18 @@ export default class CommonController extends Controller {
   /* 获取七牛云的Token */
   public async Qiniu() {
     const { ctx } = this;
-    console.log(4444);
-    const result = await ctx.service.upload.getQiniuToken();
-    console.log(222, result);
+    const token = await ctx.service.upload.getQiniuToken();
+    if (token) {
+      ctx.body = {
+        code: 200,
+        message: 'success',
+        token,
+      };
+      return;
+    }
     ctx.body = {
-      code: 200,
-      message: 'success',
-      result,
+      code: 400,
+      message: 'error',
     };
   }
 }
