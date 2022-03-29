@@ -14,8 +14,6 @@ export default (app: Application) => {
 
   router.get('/api/common/test', controller.common.Test);
   router.get('/api/common/time', controller.common.Time);
-  // 获取七牛云Token
-  router.get('/api/common/qiniu', controller.common.Qiniu);
 
 
   /* 用户相关 */
@@ -41,9 +39,12 @@ export default (app: Application) => {
   router.post('/api/userArticle/upload', _jwt, controller.userArticle.Upload);
 
 
-  /* 用于香芋味影评的 */
-  router.post('/api/taro/additem', controller.taro.ADD);
-  router.post('/api/taro/updateitem', controller.taro.Update);
-  router.get('/api/taro/getItem', controller.taro.GetItem);
-  router.get('/api/taro/getList', controller.taro.GetList);
+  /* 图片上传 */
+  // 获取七牛云Token
+  router.get('/api/img/qiniu', controller.upload.Qiniu);
+  router.post('/api/img/savefolder', controller.upload.SaveFolder);
+  router.post('/api/img/saveimg', controller.upload.SaveImg);
+  router.get('/api/img/getlist', controller.upload.getList);
+  router.get('/api/img/getfolderlist', controller.upload.getFolderList);
+
 };
