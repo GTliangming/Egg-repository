@@ -14,8 +14,6 @@ export default (app: Application) => {
 
   router.get('/api/common/test', controller.common.Test);
   router.get('/api/common/time', controller.common.Time);
-  // 获取七牛云Token
-  router.get('/api/common/qiniu', controller.common.Qiniu);
 
 
   /* 用户相关 */
@@ -39,5 +37,14 @@ export default (app: Application) => {
 
   /* 用户文章相关 */
   router.post('/api/userArticle/upload', _jwt, controller.userArticle.Upload);
+
+
+  /* 图片上传 */
+  // 获取七牛云Token
+  router.get('/api/img/qiniu', controller.upload.Qiniu);
+  router.post('/api/img/savefolder', controller.upload.SaveFolder);
+  router.post('/api/img/saveimg', controller.upload.SaveImg);
+  router.get('/api/img/getlist', controller.upload.getList);
+  router.get('/api/img/getfolderlist', controller.upload.getFolderList);
 
 };
