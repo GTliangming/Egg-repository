@@ -15,6 +15,10 @@ export default (app: Application) => {
   router.get('/api/common/test', controller.common.Test);
   router.get('/api/common/time', controller.common.Time);
 
+  router.get('/api/common/getSa', controller.common.GetSa);
+  router.post('/api/common/getTree', controller.common.GetTree);
+  router.get('/api/common/getVirtual', controller.common.GetVirtual);
+
 
   /* 用户相关 */
   // 注册
